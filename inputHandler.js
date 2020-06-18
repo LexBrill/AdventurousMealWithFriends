@@ -21,7 +21,7 @@ class GetInputs extends Component {
         this.setState({ distance: text })
     }
     submit = (term, place, price, distance) => {
-        alert('term: ' + term + " place: " + place + " price: " + price + " distance: " + distance)
+        alert("term: " + term + " place: " + place + " price: " + price + " distance: " + distance)
     }
     render(){
         return(
