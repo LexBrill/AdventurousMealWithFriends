@@ -31,7 +31,7 @@ class GetInputs extends Component {
                     onChangeText = {this.handleTerm}/>
 
                 <TextInput style = {styles.input}
-                    placehodler = "Where are you?"
+                    placeholder = "Where are you?"
                     onChangeText = {this.handleLocation}/>
 
                 <TextInput style = {styles.input}
