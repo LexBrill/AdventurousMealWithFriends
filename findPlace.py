@@ -11,14 +11,13 @@ yelp_api = YelpAPI("k2wveRe1gZI92NEveqKIiySGDdWBWi2trTcLw5XCCGH3U2Y0s9qocYX6GUP8
 # inputLimit = 10 
 # inputDistance = int(input("Maximum distance in miles: "))
 
-if len(sys.argv) == 5:
-    inputTerm = sys.argv[1]
-    inputLocation = sys.argv[2]
-    inputPrice = sys.argv[3]
-    inputLimit = 10
-    inputDistance = sys.argv[4]
-else:
-    pass
+inputTerm = sys.argv[1]
+inputLocation = sys.argv[2]
+inputPrice = sys.argv[3]
+inputLimit = 10
+inputDistance = sys.argv[4]
+
+
 
 rand = random.randint(0, int(inputLimit)-1)
 
@@ -36,6 +35,6 @@ else:
 restaurants = search_results.values() #gets the values from the dictionary
 restList = list(restaurants) #converts the values into a list
 chosenRestaurant = restList[0][rand] #gets the random restaurant
-print("\n\n\n")
+# print("\n\n\n")
 
-pprint(chosenRestaurant)
+print(chosenRestaurant)
