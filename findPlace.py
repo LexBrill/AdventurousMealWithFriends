@@ -1,14 +1,24 @@
 import random
+import sys
 from pprint import pprint
 from yelpapi import YelpAPI
 
 yelp_api = YelpAPI("k2wveRe1gZI92NEveqKIiySGDdWBWi2trTcLw5XCCGH3U2Y0s9qocYX6GUP8b-fGzUCDVCbWOHhh3tHeOi6QqQVcTmkPUlrEXLOWDJ0OwiqQI3P8jX-j7MVOT_KtXnYx", timeout_s=3.0)
 
-inputTerm = input("Search Term: ")
-inputLocation = input("Your Location: ")
-inputPrice = input("High or low price?: ").lower()
-inputLimit = 10 
-inputDistance = int(input("Maximum distance in miles: "))
+# inputTerm = input("Search Term: ")
+# inputLocation = input("Your Location: ")
+# inputPrice = input("High or low price?: ").lower()
+# inputLimit = 10 
+# inputDistance = int(input("Maximum distance in miles: "))
+
+if len(sys.argv) == 5:
+    inputTerm = sys.argv[1]
+    inputLocation = sys.argv[2]
+    inputPrice = sys.argv[3]
+    inputLimit = 10
+    inputDistance = sys.argv[4]
+else:
+    pass
 
 rand = random.randint(0, int(inputLimit)-1)
 
