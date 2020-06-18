@@ -27,5 +27,5 @@ restaurants = search_results.values() #gets the values from the dictionary
 restList = list(restaurants) #converts the values into a list
 chosenRestaurant = restList[0][rand] #gets the random restaurant
 print("\n\n\n")
-
 pprint(chosenRestaurant)
+print('yo')
