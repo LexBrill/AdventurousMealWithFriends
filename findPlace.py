@@ -18,7 +18,6 @@ inputLimit = 10
 inputDistance = sys.argv[4]
 
 
-
 rand = random.randint(0, int(inputLimit)-1)
 
 if inputPrice == '':
