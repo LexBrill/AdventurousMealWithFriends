@@ -22,11 +22,11 @@ class GetInputs extends Component {
     }
     submit = (term, place, price, distance) => {
         alert("term: " + term + " place: " + place + " price: " + price + " distance: " + distance)
-        const execFile = require('child_process').execFile
-        const process = execFile('python' , ['./testScript.py', term, place, price, distance]);
-        process.stdout.on('data' , data => {
-            console.log(data.toString());
-        });
+        // const execFile = require('child_process').execFile
+        // const process = execFile('python' , ['./testScript.py', term, place, price, distance]);
+        // process.stdout.on('data' , data => {
+        //     console.log(data.toString());
+        // });
     }
     render(){
         return(

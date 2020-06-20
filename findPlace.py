@@ -17,6 +17,7 @@ inputPrice = sys.argv[3]
 inputLimit = 10
 inputDistance = sys.argv[4]
 
+print(inputTerm + " " + inputLocation + " " + inputPrice + " " + inputDistance)
 
 rand = random.randint(0, int(inputLimit)-1)
 
