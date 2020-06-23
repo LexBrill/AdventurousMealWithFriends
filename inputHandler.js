@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, StyleSheet,Button } from 'react-native'
 
 class GetInputs extends Component {
     state = {
@@ -81,7 +81,9 @@ export default GetInputs
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 23
+        paddingTop: 23,
+        justifyContent: 'center',
+        flex: 1,
     },
     input: {
         margin: 15,
