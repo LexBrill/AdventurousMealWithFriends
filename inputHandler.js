@@ -39,7 +39,8 @@ class GetInputs extends Component {
         body: JSON.stringify(dict)
         })
         .then(response => response.text())
-        .then(data => alert(data))
+        .then(data => alert(JSON.parse(data).name + " " + JSON.parse(data).rating))
+        
         // alert("term: " + term + " place: " + place + " price: " + price + " distance: " + distance)
         // fetch('https://us-central1-local-catalyst-281121.cloudfunctions.net/Test/', {
         //     method: 'POST',
