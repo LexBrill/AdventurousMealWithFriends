@@ -14,8 +14,11 @@ class GetInputs extends Component {
     handleLocation = (text) => {
         this.setState({ place: text })
     }
-    handlePrice = (text) => {
-        this.setState({ price: text })
+    handleHighPrice = () => {
+        this.setState({ price: "high" })
+    }
+    handleLowPrice = () => {
+        this.setState({ price: 'low' })
     }
     handleDistance = (text) => {
         this.setState({ distance: text })
@@ -59,19 +62,29 @@ class GetInputs extends Component {
                     placeholder = "Where are you?"
                     onChangeText = {this.handleLocation}/>
 
-                <TextInput style = {styles.input}
-                    placeholder = "What price?"
-                    onChangeText = {this.handlePrice}/>
+<View  style= {{flexDirection: "row"}}>
 
+                <Button
+                style= {styles.button}
+                onPress =  {this.handleHighPrice}
+               title= "High"
+                /> 
+                
+                <Button
+                style= {styles.button}
+                onPress =  {this.handleLowPrice}
+               title= "Low"
+                /> 
+
+</View>
                 <TextInput style = {styles.input}
                     placeholder = "Maximum distance?"
                     onChangeText = {this.handleDistance}/>
                 
-                <TouchableOpacity style = {styles.submitButton}
-                onPress = {
-                    () => this.submit(this.state.term, this.state.place, this.state.price, this.state.distance)
-                }>
-                    <Text style = {styles.submitButtonText}> Submit </Text>
+                <TouchableOpacity 
+                style = {styles.submitButton}
+                onPress = { () => this.submit(this.state.term, this.state.place, this.state.price, this.state.distance)}>
+                <Text style = {styles.submitButtonText}> Submit </Text>
                 </TouchableOpacity>
             </View>
         )
@@ -99,5 +112,13 @@ const styles = StyleSheet.create({
     },
     submitButtonText: {
         color: 'white'
-    }
+    },
+    button: {
+        backgroundColor: "green",
+        paddingVertical:33,
+        paddingHorizontal:85,
+        borderRadius:100,
+        height:20,
+    
+    },
 })
