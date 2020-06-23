@@ -21,8 +21,28 @@ class GetInputs extends Component {
         this.setState({ distance: text })
     }
     submit = (term, place, price, distance) => {
+        var dict = {
+            "term" : term,
+            "location" : place,
+            "price" : price,
+            "distance" : parseInt(distance)
+        }
+        // var searchInfo = { term: term, location: place, price: price, distance: distance};     
+        fetch('https://us-central1-local-catalyst-281121.cloudfunctions.net/Test/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dict)
+        })
+        .then(response => response.text())
+        .then(data => console.log(data))
         alert("term: " + term + " place: " + place + " price: " + price + " distance: " + distance)
-        // const execFile = require('child_process').execFile
+        // fetch('https://us-central1-local-catalyst-281121.cloudfunctions.net/Test/', {
+        //     method: 'POST',
+        //     body: JSON.stringify(searchInfo)
+        // })
+        // const execFile = require('child_process').execFile 
         // const process = execFile('python' , ['./testScript.py', term, place, price, distance]);
         // process.stdout.on('data' , data => {
         //     console.log(data.toString());
