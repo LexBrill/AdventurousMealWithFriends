@@ -44,7 +44,7 @@ else:
 
 # search_results = yelp_api.search_query(term = inputTerm, location = inputLocation, radius = int(1609*inputDistance))
 print(search_results['total'])
-
+    
 if search_results['total'] >= 20:
     rand = random.randint(0, 20)
 elif search_results['total'] == 0:
@@ -60,4 +60,4 @@ restList = list(restaurants) #converts the values into a list
 chosenRestaurant = restList[0][rand] #gets the random restaurant
 # print("\n\n\n")
 
-print(chosenRestaurant)
+pprint(chosenRestaurant)
