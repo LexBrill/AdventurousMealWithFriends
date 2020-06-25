@@ -65,17 +65,16 @@ class GetInputs extends Component {
 
 <View  style= {{flexDirection: "row"}}>
 
-                <Button
-                style= {styles.button}
-                onPress =  {this.handleHighPrice}
-               title= "High"
-                /> 
+                <TouchableOpacity style= {styles.button}
+                onPress =  {this.handleHighPrice}>
+                <Text style = {styles.submitButtonText}>High</Text>
+                </TouchableOpacity>
+              
                 
-                <Button
-                style= {styles.button}
-                onPress =  {this.handleLowPrice}
-               title= "Low"
-                /> 
+                <TouchableOpacity style= {styles.button}
+                onPress =  {this.handleLowPrice}>
+                <Text style = {styles.submitButtonText}>Low</Text>
+                </TouchableOpacity>
 
 </View>
                 <TextInput style = {styles.input}
@@ -102,24 +101,30 @@ const styles = StyleSheet.create({
     input: {
         margin: 15,
         height: 40,
-        borderColor: '#7a42f4',
+        borderColor: '#003399',
         borderWidth: 1
     },
     submitButton: {
-        backgroundColor: '#7a42f4',
+        backgroundColor: '#003399',
         padding: 10,
         margin: 15,
-        height: 40
+        height: 40,
+        justifyContent: 'center',
+        alignItems:'center',
+        borderRadius:1000,
     },
     submitButtonText: {
         color: 'white'
     },
     button: {
-        backgroundColor: "green",
-        paddingVertical:33,
-        paddingHorizontal:85,
-        borderRadius:100,
-        height:20,
+        backgroundColor: "#003399",
+        margin: 10,
+        padding: 10,
+        borderRadius:1000,
+        height:40,
+        width:170,
+        justifyContent: 'center',
+        alignItems:'center',
     
     },
 })
