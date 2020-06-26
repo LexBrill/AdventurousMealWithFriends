@@ -65,10 +65,12 @@ class GetInputs extends Component {
             <View style = {styles.container}>
                 <TextInput style = {styles.input}
                     placeholder = "Search Term"
+                    placeholderTextColor = 'white'
                     onChangeText = {this.handleTerm}/>
 
                 <TextInput style = {styles.input}
                     placeholder = "Where are you?"
+                    placeholderTextColor = 'white'
                     onChangeText = {this.handleLocation}/>
 
 <View  style= {{flexDirection: "row"}}>
@@ -87,6 +89,7 @@ class GetInputs extends Component {
 </View>
                 <TextInput style = {styles.input}
                     placeholder = "Maximum distance?"
+                    placeholderTextColor = 'white'
                     onChangeText = {this.handleDistance}/>
                 
                 <TouchableOpacity 
@@ -97,10 +100,6 @@ class GetInputs extends Component {
                 <Text style = {styles.submitButtonText}> Submit </Text>
                 </TouchableOpacity>
 
-
-            <Button
-            
-            title= 'Results'/>
  </View>
         )
     }
