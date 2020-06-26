@@ -16,9 +16,9 @@ class GetResult extends Component {
                 <TouchableOpacity
                 style = {styles.submitButton}
                 onPress = {() => {
-                    this._MyComponent.setNativeProps({text: global.data.name + " " + global.data.rating});
+                    this._MyComponent.setNativeProps({text: global.data.name});
                 }}>
-                <Text>POres MEee</Text></TouchableOpacity>
+                <Text>Press Me</Text></TouchableOpacity>
 
                 <Button title='Go back'
                     onPress={()=>this.props.navigation.navigate('Random Restaurant')}/>

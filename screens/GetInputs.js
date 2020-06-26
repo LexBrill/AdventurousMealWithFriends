@@ -44,7 +44,7 @@ class GetInputs extends Component {
         })
         .then(response => response.text())
         .then(data => global.data = JSON.parse(data))
-        // .then(d => alert(global.data.name + " " + global.data.rating))
+        // .then(d => alert(global.data.name))
         // .then(data => alert(JSON.parse(data).name + " " + JSON.parse(data).rating))
 
         
