@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput, StyleSheet,Button } from 'react-native'
+import { createStackNavigator} from '@react-navigation/stack';
+import {useNavigation, NavigationContainer } from '@react-navigation/native';
+
 
 class GetInputs extends Component {
     state = {
@@ -51,6 +54,7 @@ class GetInputs extends Component {
         // process.stdout.on('data' , data => {
         //     console.log(data.toString());
         // });
+
     }
     render(){
         return(
@@ -86,11 +90,17 @@ class GetInputs extends Component {
                 onPress = { () => this.submit(this.state.term, this.state.place, this.state.price, this.state.distance)}>
                 <Text style = {styles.submitButtonText}> Submit </Text>
                 </TouchableOpacity>
-            </View>
+
+
+            <Button
+            onPress={()=>this.props.navigation.push('Results')}
+            title= 'Results'/>
+ </View>
         )
     }
 }
 export default GetInputs
+
 
 const styles = StyleSheet.create({
     container: {

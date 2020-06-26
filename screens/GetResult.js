@@ -1,20 +1,38 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, TextInput, StyleSheet,Button } from 'react-native'
-export class ResultPage extends Component {
+import { View, Text, TouchableOpacity, StyleSheet, Button} from 'react-native'  
+import {useNavigation, NavigationContainer } from '@react-navigation/native';
+import GetInputs from './GetInputs.js'
+
+
+class GetResult extends Component {
     render() {
         return(
+            
             <View style= {styles.container}>
+                 
                 <Text>You made it to the page!!!!!!!!!</Text>
+
+                <Button title='Go back'
+                    onPress={()=>this.props.navigation.navigate('Random Restaurant')}/>
+
             </View>
+            
+
         );
     }
 };
-// export default ResultPage;
+
+
+
+
+
+export default GetResult;
 const styles = StyleSheet.create({
     container: {
         paddingTop: 23,
         justifyContent: 'center',
         flex: 1,
+        alignItems: 'center',
     },
     input: {
         margin: 15,
