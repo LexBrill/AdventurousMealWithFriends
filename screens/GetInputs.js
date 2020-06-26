@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput, StyleSheet,Button } from 'react-native'
+import './global.js'
 import { createStackNavigator} from '@react-navigation/stack';
 import {useNavigation, NavigationContainer } from '@react-navigation/native';
 
@@ -42,7 +43,10 @@ class GetInputs extends Component {
         body: JSON.stringify(dict)
         })
         .then(response => response.text())
-        .then(data => alert(JSON.parse(data).name + " " + JSON.parse(data).rating))
+        .then(data => global.data = JSON.parse(data))
+        // .then(d => alert(global.data.name + " " + global.data.rating))
+        // .then(data => alert(JSON.parse(data).name + " " + JSON.parse(data).rating))
+
         
         // alert("term: " + term + " place: " + place + " price: " + price + " distance: " + distance)
         // fetch('https://us-central1-local-catalyst-281121.cloudfunctions.net/Test/', {
@@ -88,7 +92,8 @@ class GetInputs extends Component {
                 <TouchableOpacity 
                 style = {styles.submitButton}
                 onPress = { () => this.submit(this.state.term, this.state.place, this.state.price, this.state.distance)}
-                onPress={()=>this.props.navigation.push('Results')}>
+                onPress={()=>this.props.navigation.push('Results')}
+                >
                 <Text style = {styles.submitButtonText}> Submit </Text>
                 </TouchableOpacity>
 
