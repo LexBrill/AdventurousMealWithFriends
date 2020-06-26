@@ -87,13 +87,14 @@ class GetInputs extends Component {
                 
                 <TouchableOpacity 
                 style = {styles.submitButton}
-                onPress = { () => this.submit(this.state.term, this.state.place, this.state.price, this.state.distance)}>
+                onPress = { () => this.submit(this.state.term, this.state.place, this.state.price, this.state.distance)}
+                onPress={()=>this.props.navigation.push('Results')}>
                 <Text style = {styles.submitButtonText}> Submit </Text>
                 </TouchableOpacity>
 
 
             <Button
-            onPress={()=>this.props.navigation.push('Results')}
+            
             title= 'Results'/>
  </View>
         )
@@ -107,12 +108,14 @@ const styles = StyleSheet.create({
         paddingTop: 23,
         justifyContent: 'center',
         flex: 1,
+        backgroundColor: '#47476B',
     },
     input: {
         margin: 15,
         height: 40,
         borderColor: '#003399',
-        borderWidth: 1
+        borderWidth: 1,
+        color: 'white'
     },
     submitButton: {
         backgroundColor: '#003399',

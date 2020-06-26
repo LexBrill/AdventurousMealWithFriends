@@ -3,7 +3,6 @@ import { View, Text, TouchableOpacity, StyleSheet, Button} from 'react-native'
 import {useNavigation, NavigationContainer } from '@react-navigation/native';
 import GetInputs from './GetInputs.js'
 
-
 class GetResult extends Component {
     render() {
         return(
