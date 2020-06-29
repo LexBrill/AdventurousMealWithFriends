@@ -34,7 +34,26 @@ class GetInputs extends Component {
             "price" : price,
             "distance" : parseInt(distance)
         }
-        // var searchInfo = { term: term, location: place, price: price, distance: distance};     
+        // var searchInfo = { term: term, location: place, price: price, distance: distance};    
+        
+        // var booling = true
+        // // while(booling){
+        // async () => {
+        //     const response = await fetch('https://us-central1-local-catalyst-281121.cloudfunctions.net/Test/',
+        //         {
+        //             method: 'POST',
+        //             headers: {
+        //                 'Content-Type': 'application/json'
+        //             },
+        //             body: JSON.stringify(dict)
+        //         });
+        //         global.data = await response.json();
+
+        //         // global.data = json;
+        //         // booling = false;
+        //     };
+        // // }
+        
         fetch('https://us-central1-local-catalyst-281121.cloudfunctions.net/Test/', {
         method: 'POST',
         headers: {
@@ -43,7 +62,26 @@ class GetInputs extends Component {
         body: JSON.stringify(dict)
         })
         .then(response => response.text())
-        .then(data => global.data = JSON.parse(data))
+        .then(data => global.data = data)
+        // .then(data => alert(JSON.parse(data).name + " " + JSON.parse(data).rating))
+
+        // .then(response => alert(response.text()))
+        // .then(() => alert(global.data))
+        
+            if(JSON.parse(global.data).name.localeCompare('ur fucked') == 0){
+                alert("ur fucked")
+            }
+            else{
+                this.props.navigation.push('Results')
+            }
+        
+
+
+
+
+
+
+
         // .then(d => alert(global.data.name))
         // .then(data => alert(JSON.parse(data).name + " " + JSON.parse(data).rating))
 
@@ -95,7 +133,7 @@ class GetInputs extends Component {
                 <TouchableOpacity 
                 style = {styles.submitButton}
                 onPress = { () => this.submit(this.state.term, this.state.place, this.state.price, this.state.distance)}
-                onPress={()=>this.props.navigation.push('Results')}
+                // onPress={()=>this.props.navigation.push('Results')}
                 >
                 <Text style = {styles.submitButtonText}> Submit </Text>
                 </TouchableOpacity>

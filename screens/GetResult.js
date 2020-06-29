@@ -16,7 +16,7 @@ class GetResult extends Component {
                 <TouchableOpacity
                 style = {styles.submitButton}
                 onPress = {() => {
-                    this._MyComponent.setNativeProps({text: global.data.name});
+                    this._MyComponent.setNativeProps({text: JSON.parse(global.data).name});
                 }}>
                 <Text>Press Me</Text></TouchableOpacity>
 
