@@ -53,6 +53,9 @@ class GetInputs extends Component {
         //         // booling = false;
         //     };
         // // }
+        function switchPage(){
+            this.props.navigation.push('Results')
+        }
         
         fetch('https://us-central1-local-catalyst-281121.cloudfunctions.net/Test/', {
         method: 'POST',
@@ -63,17 +66,18 @@ class GetInputs extends Component {
         })
         .then(response => response.text())
         .then(data => global.data = data)
+        .then(zoop => this.props.navigation.push('Results'))
         // .then(data => alert(JSON.parse(data).name + " " + JSON.parse(data).rating))
 
         // .then(response => alert(response.text()))
         // .then(() => alert(global.data))
         
-            if(JSON.parse(global.data).name.localeCompare('ur fucked') == 0){
-                alert("ur fucked")
-            }
-            else{
-                this.props.navigation.push('Results')
-            }
+            // if(JSON.parse(global.data).name.localeCompare('ur fucked') == 0){
+            //     alert("ur fucked")
+            // }
+            // else{
+            //     this.props.navigation.push('Results')
+            // }
         
 
 
