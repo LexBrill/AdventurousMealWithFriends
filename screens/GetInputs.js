@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, TextInput, StyleSheet,Button } from 'reac
 import './global.js'
 import { createStackNavigator} from '@react-navigation/stack';
 import {useNavigation, NavigationContainer } from '@react-navigation/native';
+import AwesomeButton from "react-native-really-awesome-button";
 
 
 class GetInputs extends Component {
@@ -116,31 +117,30 @@ class GetInputs extends Component {
                     onChangeText = {this.handleLocation}/>
 
 <View  style= {{flexDirection: "row"}}>
-
-                <TouchableOpacity style= {styles.button}
+                <AwesomeButton type= "primary"
+                style = {styles.button}
                 onPress =  {this.handleHighPrice}>
-                <Text style = {styles.submitButtonText}>High</Text>
-                </TouchableOpacity>
+                <Text style = {styles.submitButtontext}>High</Text>
+                </AwesomeButton>
               
                 
-                <TouchableOpacity style= {styles.button}
+                <AwesomeButton type= "primary"
+                style = {styles.button}
                 onPress =  {this.handleLowPrice}>
                 <Text style = {styles.submitButtonText}>Low</Text>
-                </TouchableOpacity>
+                </AwesomeButton>
 
 </View>
                 <TextInput style = {styles.input}
                     placeholder = "Maximum distance?"
-                    placeholderTextColor = 'white'
                     onChangeText = {this.handleDistance}/>
                 
-                <TouchableOpacity 
+                <AwesomeButton 
                 style = {styles.submitButton}
-                onPress = { () => this.submit(this.state.term, this.state.place, this.state.price, this.state.distance)}
-                // onPress={()=>this.props.navigation.push('Results')}
-                >
+                onPress = { () => this.submit(this.state.term, this.state.place, this.state.price, this.state.distance)}>
                 <Text style = {styles.submitButtonText}> Submit </Text>
-                </TouchableOpacity>
+                </AwesomeButton>
+                
 
  </View>
         )
@@ -176,7 +176,6 @@ const styles = StyleSheet.create({
         color: 'white'
     },
     button: {
-        backgroundColor: "#003399",
         margin: 10,
         padding: 10,
         borderRadius:1000,
