@@ -9,7 +9,7 @@ npm-debug.*
 *.orig.*
 web-build/
 web-report/
-findPlace.py*
+*findPlace.py
 
 # macOS
 .DS_Store
