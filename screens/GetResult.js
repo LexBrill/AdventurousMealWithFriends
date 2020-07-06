@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet, Button, TextInput } from 'react-native'  
+import { View, Text, TouchableOpacity, StyleSheet, Button, TextInput, Image } from 'react-native'  
 import './global'
 import {useNavigation, NavigationContainer } from '@react-navigation/native';
 import GetInputs from './GetInputs.js'
@@ -9,9 +9,15 @@ class GetResult extends Component {
         return(
             
             <View style= {styles.container}>
-                 
-                <Text>You made it to the page!!!!!!!!!</Text>
-                <TextInput editable = {false} ref = {component => this._MyComponent = component}/>
+        <Image
+        source = {global.image}
+        /> 
+        {/* <Text>{global.image}</Text> */}
+        <Text>{JSON.parse(global.data).name}</Text>
+        <Text>{JSON.parse(global.data).rating}</Text>
+        <Text>{JSON.parse(global.data).phone}</Text>
+        <Text>{JSON.parse(global.data).location.display_address}</Text>
+                {/* <TextInput editable = {false} ref = {component => this._MyComponent = component}/>
 
                 <TouchableOpacity
                 style = {styles.submitButton}
@@ -21,7 +27,7 @@ class GetResult extends Component {
                 <Text>Press Me</Text></TouchableOpacity>
 
                 <Button title='Go back'
-                    onPress={()=>this.props.navigation.navigate('Random Restaurant')}/>
+                    onPress={()=>this.props.navigation.navigate('Random Restaurant')}/> */}
 
             </View>
             

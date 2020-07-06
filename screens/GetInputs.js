@@ -67,6 +67,9 @@ class GetInputs extends Component {
         })
         .then(response => response.text())
         .then(data => global.data = data)
+        .then(ahaha => global.image = fetch(JSON.parse(global.data).image_url, {
+            method: 'GET',
+            }))
         .then(zoop => this.props.navigation.push('Results'))
         // .then(data => alert(JSON.parse(data).name + " " + JSON.parse(data).rating))
 
@@ -146,6 +149,7 @@ class GetInputs extends Component {
                 progress
                 stretch = {true}
                 height = {55}
+                
                 onPress = { () => this.submit(this.state.term, this.state.place, this.state.price, this.state.distance)}>
                 <Text style = {styles.submitButtonText}> Submit </Text>
                 </AwesomeButton>
