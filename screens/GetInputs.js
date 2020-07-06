@@ -118,14 +118,18 @@ class GetInputs extends Component {
 
 <View  style= {{flexDirection: "row"}}>
                 <AwesomeButton type= "primary"
+                progress
                 style = {styles.button}
+                stretch = {true}
                 onPress =  {this.handleHighPrice}>
-                <Text style = {styles.submitButtontext}>High</Text>
+                <Text style = {styles.submitButtonText}>High</Text>
                 </AwesomeButton>
               
                 
                 <AwesomeButton type= "primary"
+                progress
                 style = {styles.button}
+                stretch = {true}
                 onPress =  {this.handleLowPrice}>
                 <Text style = {styles.submitButtonText}>Low</Text>
                 </AwesomeButton>
@@ -137,6 +141,8 @@ class GetInputs extends Component {
                 
                 <AwesomeButton 
                 style = {styles.submitButton}
+                progress
+                stretch = {true}
                 onPress = { () => this.submit(this.state.term, this.state.place, this.state.price, this.state.distance)}>
                 <Text style = {styles.submitButtonText}> Submit </Text>
                 </AwesomeButton>
@@ -180,7 +186,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius:1000,
         height:40,
-        width:170,
+        width:190,
         justifyContent: 'center',
         alignItems:'center',
     
