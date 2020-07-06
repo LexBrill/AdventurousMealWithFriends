@@ -118,8 +118,8 @@ class GetInputs extends Component {
 
 <View  style= {{flexDirection: "row"}}>
                 <AwesomeButton type= "primary"
-                progress
                 style = {styles.button}
+                height = {40}
                 stretch = {true}
                 onPress =  {this.handleHighPrice}>
                 <Text style = {styles.submitButtonText}>High</Text>
@@ -127,8 +127,8 @@ class GetInputs extends Component {
               
                 
                 <AwesomeButton type= "primary"
-                progress
                 style = {styles.button}
+                height = {40}
                 stretch = {true}
                 onPress =  {this.handleLowPrice}>
                 <Text style = {styles.submitButtonText}>Low</Text>
@@ -137,12 +137,15 @@ class GetInputs extends Component {
 </View>
                 <TextInput style = {styles.input}
                     placeholder = "Maximum distance?"
+                    placeholderTextColor = 'white'
                     onChangeText = {this.handleDistance}/>
                 
                 <AwesomeButton 
                 style = {styles.submitButton}
+                raiseLevel = {6}
                 progress
                 stretch = {true}
+                height = {55}
                 onPress = { () => this.submit(this.state.term, this.state.place, this.state.price, this.state.distance)}>
                 <Text style = {styles.submitButtonText}> Submit </Text>
                 </AwesomeButton>
@@ -170,13 +173,14 @@ const styles = StyleSheet.create({
         color: 'white'
     },
     submitButton: {
-        backgroundColor: '#003399',
+        // backgroundColor: '#003399',
         padding: 10,
         margin: 15,
-        height: 40,
+        height: 55,
         justifyContent: 'center',
         alignItems:'center',
         borderRadius:1000,
+        width: 365
     },
     submitButtonText: {
         color: 'white'
@@ -186,7 +190,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius:1000,
         height:40,
-        width:190,
+        width:175,
         justifyContent: 'center',
         alignItems:'center',
     
