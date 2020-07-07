@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, TextInput, StyleSheet,Button } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, StyleSheet, Button } from 'react-native'
 import './global.js'
-import { createStackNavigator} from '@react-navigation/stack';
-import {useNavigation, NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { useNavigation, NavigationContainer } from '@react-navigation/native';
 import AwesomeButton from "react-native-really-awesome-button";
 
 
@@ -28,15 +28,18 @@ class GetInputs extends Component {
     handleDistance = (text) => {
         this.setState({ distance: text })
     }
+    handleUserLocation = () => {
+        
+    }
     submit = (term, place, price, distance) => {
         var dict = {
-            "term" : term,
-            "location" : place,
-            "price" : price,
-            "distance" : parseInt(distance)
+            "term": term,
+            "location": place,
+            "price": price,
+            "distance": parseInt(distance)
         }
         // var searchInfo = { term: term, location: place, price: price, distance: distance};    
-        
+
         // var booling = true
         // // while(booling){
         // async () => {
@@ -54,35 +57,35 @@ class GetInputs extends Component {
         //         // booling = false;
         //     };
         // // }
-        function switchPage(){
+        function switchPage() {
             this.props.navigation.push('Results')
         }
-        
+
         fetch('https://us-central1-local-catalyst-281121.cloudfunctions.net/Test/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(dict)
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dict)
         })
-        .then(response => response.text())
-        .then(data => global.data = data)
-        .then(ahaha => global.image = fetch(JSON.parse(global.data).image_url, {
-            method: 'GET',
+            .then(response => response.text())
+            .then(data => global.data = data)
+            .then(ahaha => global.image = fetch(JSON.parse(global.data).image_url, {
+                method: 'GET',
             }))
-        .then(zoop => this.props.navigation.push('Results'))
+            .then(zoop => this.props.navigation.push('Results'))
         // .then(data => alert(JSON.parse(data).name + " " + JSON.parse(data).rating))
 
         // .then(response => alert(response.text()))
         // .then(() => alert(global.data))
-        
-            // if(JSON.parse(global.data).name.localeCompare('ur fucked') == 0){
-            //     alert("ur fucked")
-            // }
-            // else{
-            //     this.props.navigation.push('Results')
-            // }
-        
+
+        // if(JSON.parse(global.data).name.localeCompare('ur fucked') == 0){
+        //     alert("ur fucked")
+        // }
+        // else{
+        //     this.props.navigation.push('Results')
+        // }
+
 
 
 
@@ -93,7 +96,7 @@ class GetInputs extends Component {
         // .then(d => alert(global.data.name))
         // .then(data => alert(JSON.parse(data).name + " " + JSON.parse(data).rating))
 
-        
+
         // alert("term: " + term + " place: " + place + " price: " + price + " distance: " + distance)
         // fetch('https://us-central1-local-catalyst-281121.cloudfunctions.net/Test/', {
         //     method: 'POST',
@@ -106,56 +109,66 @@ class GetInputs extends Component {
         // });
 
     }
-    render(){
-        return(
-            <View style = {styles.container}>
-                <TextInput style = {styles.input}
-                    placeholder = "Search Term"
-                    placeholderTextColor = 'white'
-                    onChangeText = {this.handleTerm}/>
+    render() {
+        return (
+            <View style={styles.container}>
+                <TextInput style={styles.input}
+                    placeholder="Search Term"
+                    placeholderTextColor='white'
+                    onChangeText={this.handleTerm} />
 
-                <TextInput style = {styles.input}
-                    placeholder = "Where are you?"
-                    placeholderTextColor = 'white'
-                    onChangeText = {this.handleLocation}/>
+                <View style={{ flexDirection: "row" }}>
+                    <TextInput style={styles.input}
+                        width = {230}
+                        placeholder="Where are you?"
+                        placeholderTextColor='white'
+                        onChangeText={this.handleLocation} />
+                    <AwesomeButton type="primary"
+                        style={styles.locButton}
+                        height={40}
+                        stretch={true}
+                        onPress={this.handleHighPrice}>
+                        <Text style={styles.submitButtonText}>Use My Location</Text>
+                    </AwesomeButton>
+                </View>
 
-<View  style= {{flexDirection: "row"}}>
-                <AwesomeButton type= "primary"
-                style = {styles.button}
-                height = {40}
-                stretch = {true}
-                onPress =  {this.handleHighPrice}>
-                <Text style = {styles.submitButtonText}>High</Text>
+                <View style={{ flexDirection: "row" }}>
+                    <AwesomeButton type="primary"
+                        style={styles.button}
+                        height={40}
+                        stretch={true}
+                        onPress={this.handleHighPrice}>
+                        <Text style={styles.submitButtonText}>High</Text>
+                    </AwesomeButton>
+
+
+                    <AwesomeButton type="primary"
+                        style={styles.button}
+                        height={40}
+                        stretch={true}
+                        onPress={this.handleLowPrice}>
+                        <Text style={styles.submitButtonText}>Low</Text>
+                    </AwesomeButton>
+
+                </View>
+                <TextInput style={styles.input}
+                    placeholder="Maximum distance?"
+                    placeholderTextColor='white'
+                    onChangeText={this.handleDistance} />
+
+                <AwesomeButton
+                    style={styles.submitButton}
+                    raiseLevel={6}
+                    progress
+                    stretch={true}
+                    height={55}
+
+                    onPress={() => this.submit(this.state.term, this.state.place, this.state.price, this.state.distance)}>
+                    <Text style={styles.submitButtonText}> Submit </Text>
                 </AwesomeButton>
-              
-                
-                <AwesomeButton type= "primary"
-                style = {styles.button}
-                height = {40}
-                stretch = {true}
-                onPress =  {this.handleLowPrice}>
-                <Text style = {styles.submitButtonText}>Low</Text>
-                </AwesomeButton>
 
-</View>
-                <TextInput style = {styles.input}
-                    placeholder = "Maximum distance?"
-                    placeholderTextColor = 'white'
-                    onChangeText = {this.handleDistance}/>
-                
-                <AwesomeButton 
-                style = {styles.submitButton}
-                raiseLevel = {6}
-                progress
-                stretch = {true}
-                height = {55}
-                
-                onPress = { () => this.submit(this.state.term, this.state.place, this.state.price, this.state.distance)}>
-                <Text style = {styles.submitButtonText}> Submit </Text>
-                </AwesomeButton>
-                
 
- </View>
+            </View>
         )
     }
 }
@@ -182,8 +195,8 @@ const styles = StyleSheet.create({
         margin: 15,
         height: 55,
         justifyContent: 'center',
-        alignItems:'center',
-        borderRadius:1000,
+        alignItems: 'center',
+        borderRadius: 1000,
         width: 365
     },
     submitButtonText: {
@@ -192,11 +205,20 @@ const styles = StyleSheet.create({
     button: {
         margin: 10,
         padding: 10,
-        borderRadius:1000,
-        height:40,
-        width:175,
+        borderRadius: 1000,
+        height: 40,
+        width: 175,
         justifyContent: 'center',
-        alignItems:'center',
-    
+        alignItems: 'center',
+
+    },
+    locButton: {
+        margin: 10,
+        padding: 10,
+        borderRadius: 1000,
+        height: 40,
+        width: 100,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 })

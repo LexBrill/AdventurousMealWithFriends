@@ -1,22 +1,28 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet, Button, TextInput, Image } from 'react-native'  
+import { View, Text, TouchableOpacity, StyleSheet, Button, TextInput, Image } from 'react-native'
 import './global'
-import {useNavigation, NavigationContainer } from '@react-navigation/native';
+import { useNavigation, NavigationContainer } from '@react-navigation/native';
 import GetInputs from './GetInputs.js'
 
 class GetResult extends Component {
     render() {
-        return(
-            
-            <View style= {styles.container}>
-        <Image
-        source = {global.image}
-        /> 
-        {/* <Text>{global.image}</Text> */}
-        <Text>{JSON.parse(global.data).name}</Text>
-        <Text>{JSON.parse(global.data).rating}</Text>
-        <Text>{JSON.parse(global.data).phone}</Text>
-        <Text>{JSON.parse(global.data).location.display_address}</Text>
+        // let Image_Http_URL = { uri: 'https://reactnativecode.com/wp-content/uploads/2017/05/react_thumb_install.png'};
+        return (
+
+            <View style={styles.container}>
+                <Image source={{uri: 'https://s3-media3.fl.yelpcdn.com/bphoto/xOSFLOAAKPnyx576fwm_kg/o.jpg'}} style = {{height: 200, resizeMode : 'stretch', margin: 5 }} />
+                {/* <Image
+                    source = {Image_Http_URL}
+                    style = {{height: 200, resizeMode : 'stretch', margin: 5 }}
+                    // source={ fetch('https://s3-media3.fl.yelpcdn.com/bphoto/xOSFLOAAKPnyx576fwm_kg/o.jpg', {
+                    //     method: 'GET'
+                    //     })}
+                /> */}
+                {/* <Text>{global.image}</Text> */}
+                <Text>{JSON.parse(global.data).name}</Text>
+                <Text>{JSON.parse(global.data).rating}</Text>
+                <Text>{JSON.parse(global.data).phone}</Text>
+                <Text>{JSON.parse(global.data).location.display_address}</Text>
                 {/* <TextInput editable = {false} ref = {component => this._MyComponent = component}/>
 
                 <TouchableOpacity
@@ -30,7 +36,7 @@ class GetResult extends Component {
                     onPress={()=>this.props.navigation.navigate('Random Restaurant')}/> */}
 
             </View>
-            
+
 
         );
     }
@@ -65,10 +71,10 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: "green",
-        paddingVertical:33,
-        paddingHorizontal:85,
-        borderRadius:100,
-        height:20,
-    
+        paddingVertical: 33,
+        paddingHorizontal: 85,
+        borderRadius: 100,
+        height: 20,
+
     },
 })
