@@ -4,6 +4,9 @@ import './global.js'
 import { createStackNavigator } from '@react-navigation/stack';
 import { useNavigation, NavigationContainer } from '@react-navigation/native';
 import AwesomeButton from "react-native-really-awesome-button";
+import * as Location from 'expo-location';
+import * as Permissions from 'expo-permissions';
+// import Geolocation from '@react-native-community/geolocation';
 
 
 class GetInputs extends Component {
@@ -11,7 +14,8 @@ class GetInputs extends Component {
         term: '',
         place: '',
         price: '',
-        distance: ''
+        distance: '',
+        geocode: null,
     }
     handleTerm = (text) => {
         this.setState({ term: text })
@@ -28,8 +32,39 @@ class GetInputs extends Component {
     handleDistance = (text) => {
         this.setState({ distance: text })
     }
+    // getLocationAsync = async () => {
+    //     let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    //     if (status !== 'granted') {
+    //         this.setState({
+    //             errorMessage: 'Permission to access location was denied',
+    //         });
+    //     }
+
+    //     let location = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Highest });
+    //     const { latitude, longitude } = location.coords
+    //     this.getGeocodeAsync({ latitude, longitude })
+    //     this.setState({ location: { latitude, longitude } });
+
+    // };
     handleUserLocation = () => {
-        
+        // Geolocation.setRNConfiguration(config);
+        // Geolocation.getCurrentPosition(info => console.log(info));
+        // this.setState({ place: getLocationAsync})
+        // alert("yoyo");
+        console.log(async () => {
+            let { status } = await Permissions.askAsync(Permissions.LOCATION);
+            if (status !== 'granted') {
+                this.setState({
+                    errorMessage: 'Permission to access location was denied',
+                });
+            }
+    
+            let location = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Highest });
+            const { latitude, longitude } = location.coords
+            this.getGeocodeAsync({ latitude, longitude })
+            this.setState({ location: { latitude, longitude } });
+    
+        });
     }
     submit = (term, place, price, distance) => {
         var dict = {
@@ -119,7 +154,7 @@ class GetInputs extends Component {
 
                 <View style={{ flexDirection: "row" }}>
                     <TextInput style={styles.input}
-                        width = {230}
+                        width={230}
                         placeholder="Where are you?"
                         placeholderTextColor='white'
                         onChangeText={this.handleLocation} />
@@ -127,7 +162,7 @@ class GetInputs extends Component {
                         style={styles.locButton}
                         height={40}
                         stretch={true}
-                        onPress={this.handleHighPrice}>
+                        onPress={this.handleUserLocation}>
                         <Text style={styles.submitButtonText}>Use My Location</Text>
                     </AwesomeButton>
                 </View>
