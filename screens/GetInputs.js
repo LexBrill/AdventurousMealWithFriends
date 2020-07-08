@@ -16,6 +16,8 @@ class GetInputs extends Component {
         price: '',
         distance: '',
         errorMessage: '',
+        longitude: '',
+        latitude: ''
         // location: {},
     }
     handleTerm = (text) => {
@@ -48,7 +50,7 @@ class GetInputs extends Component {
         const userLocation = await Location.getCurrentPositionAsync();
 
         this.setState({
-            place: userLocation
+            place: JSON.stringify(userLocation)
         })
 
     }
@@ -68,7 +70,7 @@ class GetInputs extends Component {
     // };
     handleUserLocation = () => {
         this._getLocation()
-        .then(zoop => alert(JSON.stringify(this.state.place)));
+        .then(zoop => alert(JSON.parse(this.state.place).coords.latitude));
     }
     submit = (term, place, price, distance) => {
         var dict = {
