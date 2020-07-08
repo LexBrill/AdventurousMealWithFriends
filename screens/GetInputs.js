@@ -15,7 +15,8 @@ class GetInputs extends Component {
         place: '',
         price: '',
         distance: '',
-        geocode: null,
+        errorMessage: '',
+        // location: {},
     }
     handleTerm = (text) => {
         this.setState({ term: text })
@@ -32,6 +33,25 @@ class GetInputs extends Component {
     handleDistance = (text) => {
         this.setState({ distance: text })
     }
+
+    _getLocation = async() => {
+        const { status } = Permissions.askAsync(Permissions.LOCATION);
+
+        if(status !== 'granted'){
+            console.log('PERMISSION NOT GRANTED!');
+
+            this.setState({
+                errorMessage: 'PERMISSION NOT GRANTED'
+            })
+        }
+
+        const userLocation = await Location.getCurrentPositionAsync();
+
+        this.setState({
+            place: userLocation
+        })
+
+    }
     // getLocationAsync = async () => {
     //     let { status } = await Permissions.askAsync(Permissions.LOCATION);
     //     if (status !== 'granted') {
@@ -47,24 +67,8 @@ class GetInputs extends Component {
 
     // };
     handleUserLocation = () => {
-        // Geolocation.setRNConfiguration(config);
-        // Geolocation.getCurrentPosition(info => console.log(info));
-        // this.setState({ place: getLocationAsync})
-        // alert("yoyo");
-        console.log(async () => {
-            let { status } = await Permissions.askAsync(Permissions.LOCATION);
-            if (status !== 'granted') {
-                this.setState({
-                    errorMessage: 'Permission to access location was denied',
-                });
-            }
-    
-            let location = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Highest });
-            const { latitude, longitude } = location.coords
-            this.getGeocodeAsync({ latitude, longitude })
-            this.setState({ location: { latitude, longitude } });
-    
-        });
+        this._getLocation()
+        .then(zoop => alert(JSON.stringify(this.state.place)));
     }
     submit = (term, place, price, distance) => {
         var dict = {
