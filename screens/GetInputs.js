@@ -16,8 +16,8 @@ class GetInputs extends Component {
         price: '',
         distance: '',
         errorMessage: '',
-        longitude: '',
-        latitude: ''
+        // longitude: '',
+        // latitude: ''
         // location: {},
     }
     handleTerm = (text) => {
@@ -68,39 +68,25 @@ class GetInputs extends Component {
     //     this.setState({ location: { latitude, longitude } });
 
     // };
+    
+    componentDidMount(){
+        this._getLocation();
+    }
+
     handleUserLocation = () => {
-        this._getLocation()
-        .then(zoop => alert(JSON.parse(this.state.place).coords.latitude));
+        alert(JSON.parse(this.state.place).coords.latitude + " " + JSON.parse(this.state.place).coords.longitude);
     }
     submit = (term, place, price, distance) => {
         var dict = {
             "term": term,
-            "location": place,
+            "longitude": JSON.parse(place).coords.longitude,
+            "latitude": JSON.parse(place).coords.latitude,
             "price": price,
             "distance": parseInt(distance)
         }
-        // var searchInfo = { term: term, location: place, price: price, distance: distance};    
-
-        // var booling = true
-        // // while(booling){
-        // async () => {
-        //     const response = await fetch('https://us-central1-local-catalyst-281121.cloudfunctions.net/Test/',
-        //         {
-        //             method: 'POST',
-        //             headers: {
-        //                 'Content-Type': 'application/json'
-        //             },
-        //             body: JSON.stringify(dict)
-        //         });
-        //         global.data = await response.json();
-
-        //         // global.data = json;
-        //         // booling = false;
-        //     };
-        // // }
-        function switchPage() {
-            this.props.navigation.push('Results')
-        }
+        // function switchPage() {
+        //     this.props.navigation.push('Results')
+        // }
 
         fetch('https://us-central1-local-catalyst-281121.cloudfunctions.net/Test/', {
             method: 'POST',
@@ -159,17 +145,17 @@ class GetInputs extends Component {
                     onChangeText={this.handleTerm} />
 
                 <View style={{ flexDirection: "row" }}>
-                    <TextInput style={styles.input}
+                    {/* <TextInput style={styles.input}
                         width={230}
                         placeholder="Where are you?"
                         placeholderTextColor='white'
-                        onChangeText={this.handleLocation} />
+                        onChangeText={this.handleLocation} /> */}
                     <AwesomeButton type="primary"
                         style={styles.locButton}
                         height={40}
                         stretch={true}
                         onPress={this.handleUserLocation}>
-                        <Text style={styles.submitButtonText}>Use My Location</Text>
+                        <Text style={styles.submitButtonText}>What is my location?</Text>
                     </AwesomeButton>
                 </View>
 
