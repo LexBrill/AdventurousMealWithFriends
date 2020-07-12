@@ -1,52 +1,80 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet, Button, TextInput, Image } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, Button, TextInput, Image, ImageBackground } from 'react-native'
 import './global'
 import { useNavigation, NavigationContainer } from '@react-navigation/native';
 import GetInputs from './GetInputs.js'
-
-class GetResult extends Component {
-    render() {
-        // let Image_Http_URL = { uri: 'https://reactnativecode.com/wp-content/uploads/2017/05/react_thumb_install.png'};
-        return (
-
-            <View style={styles.container}>
-                <Image source={{uri: 'https://s3-media3.fl.yelpcdn.com/bphoto/xOSFLOAAKPnyx576fwm_kg/o.jpg'}} style = {{height: 200, resizeMode : 'stretch', margin: 5 }} />
-                {/* <Image
-                    source = {Image_Http_URL}
-                    style = {{height: 200, resizeMode : 'stretch', margin: 5 }}
-                    // source={ fetch('https://s3-media3.fl.yelpcdn.com/bphoto/xOSFLOAAKPnyx576fwm_kg/o.jpg', {
-                    //     method: 'GET'
-                    //     })}
-                /> */}
-                {/* <Text>{global.image}</Text> */}
-                <Text>{JSON.parse(global.data).name}</Text>
-                <Text>{JSON.parse(global.data).rating}</Text>
-                <Text>{JSON.parse(global.data).phone}</Text>
-                <Text>{JSON.parse(global.data).location.display_address}</Text>
-                {/* <TextInput editable = {false} ref = {component => this._MyComponent = component}/>
-
-                <TouchableOpacity
-                style = {styles.submitButton}
-                onPress = {() => {
-                    this._MyComponent.setNativeProps({text: JSON.parse(global.data).name});
-                }}>
-                <Text>Press Me</Text></TouchableOpacity>
-
-                <Button title='Go back'
-                    onPress={()=>this.props.navigation.navigate('Random Restaurant')}/> */}
-
-            </View>
-
-
-        );
-    }
-};
+import Swiper from 'react-native-deck-swiper';
 
 
 
+const Card = ({card}) => (
+    <View>
+        <ImageBackground
+          source={{uri: JSON.parse(global.data).image_url}} 
+          style = {{height: 600, width: 370,justifyContent: 'center',borderRadius: 40, }} 
+        >
+            <Text
+            style={{
+                fontWeight: 'bold',
+                color: 'white',
+                position:'absolute',
+                bottom: 0,
+            }}
+            >
+                {JSON.parse(global.data).name}
+                '/n'
+                {JSON.parse(global.data).rating}
+                '/n'
+                {/* {JSON.parse(global.data).phone} */}
+                {JSON.parse(global.data).location.display_address}
+            </Text>
+
+        </ImageBackground>
+           
+</View>
+);
+const CardDetails = ({index}) => (
+    <View>
+       
+    </View>
+);
+
+export default function GetResult() {
+    const [index, setIndex] = React.useState(0);
+    return(
+        <View style= {styles.container}>
+            <Swiper
+                cards = {global.data}
+                cardIndex={index}
+                renderCard={(card) => <Card card={card}/> }
+                disableTopSwipe
+                disableBottomSwipe
+                //   onSwiped= 
+                overlayLabels={{
+                    left: {
+                        title: 'NOPE',
+                        style: {
+                        label:{
+                            backgroundColor: '#F80C0C',
+                            color: '#FFFFFF',
+                            fontSize: 24
+                        },
+                        wrapper: {
+                            flexDirection: 'column',
+                            alignItems: 'flex-end',
+                            justifyContent: 'flex-start',
+                            marginTop: 20,
+                            marginLeft: -20,
+                        }
+                    }
+                }
+            }}  
+            />
+        </View>
+    )};
 
 
-export default GetResult;
+
 const styles = StyleSheet.create({
     container: {
         paddingTop: 23,
