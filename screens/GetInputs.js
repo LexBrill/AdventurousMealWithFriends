@@ -11,7 +11,7 @@ import * as Permissions from 'expo-permissions';
 
 class GetInputs extends Component {
     state = {
-        term: '',
+        // term: '',
         place: '',
         price: '',
         distance: '',
@@ -20,9 +20,9 @@ class GetInputs extends Component {
         // latitude: ''
         // location: {},
     }
-    handleTerm = (text) => {
-        this.setState({ term: text })
-    }
+    // handleTerm = (text) => {
+    //     this.setState({ term: text })
+    // }
     handleLocation = (text) => {
         this.setState({ place: text })
     }
@@ -76,9 +76,9 @@ class GetInputs extends Component {
     handleUserLocation = () => {
         alert(JSON.parse(this.state.place).coords.latitude + " " + JSON.parse(this.state.place).coords.longitude);
     }
-    submit = (term, place, price, distance) => {
+    submit = (place, price, distance) => {
         var dict = {
-            "term": term,
+            // "term": term,
             "longitude": JSON.parse(place).coords.longitude,
             "latitude": JSON.parse(place).coords.latitude,
             "price": price,
@@ -139,10 +139,10 @@ class GetInputs extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <TextInput style={styles.input}
+                {/* <TextInput style={styles.input}
                     placeholder="Search Term"
                     placeholderTextColor='white'
-                    onChangeText={this.handleTerm} />
+                    onChangeText={this.handleTerm} /> */}
 
                 <View style={{ flexDirection: "row" }}>
                     {/* <TextInput style={styles.input}
@@ -150,13 +150,13 @@ class GetInputs extends Component {
                         placeholder="Where are you?"
                         placeholderTextColor='white'
                         onChangeText={this.handleLocation} /> */}
-                    <AwesomeButton type="primary"
+                    {/* <AwesomeButton type="primary"
                         style={styles.locButton}
                         height={40}
                         stretch={true}
                         onPress={this.handleUserLocation}>
                         <Text style={styles.submitButtonText}>What is my location?</Text>
-                    </AwesomeButton>
+                    </AwesomeButton> */}
                 </View>
 
                 <View style={{ flexDirection: "row" }}>
@@ -190,7 +190,7 @@ class GetInputs extends Component {
                     stretch={true}
                     height={55}
 
-                    onPress={() => this.submit(this.state.term, this.state.place, this.state.price, this.state.distance)}>
+                    onPress={() => this.submit(this.state.place, this.state.price, this.state.distance)}>
                     <Text style={styles.submitButtonText}> Submit </Text>
                 </AwesomeButton>
 
