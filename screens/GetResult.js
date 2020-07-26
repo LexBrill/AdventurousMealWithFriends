@@ -8,30 +8,25 @@ import Swiper from 'react-native-deck-swiper';
 
 
 const Card = ({card}) => (
-    <View>
-        <ImageBackground
+
+    <View style={{flex:1,}}>
+        <Image
           source={{uri: JSON.parse(global.data).image_url}} 
-          style = {{height: 600, width: 370,justifyContent: 'center',borderRadius: 40, }} 
+          style = {styles.tinderimage} 
         >
-            <Text
-            style={{
-                fontWeight: 'bold',
-                color: 'white',
-                position:'absolute',
-                bottom: 0,
-            }}
-            >
-                {JSON.parse(global.data).name}
-                '/n'
+           
+        </Image>
+    
+        <Text style={styles.resultstext} >
+                {JSON.parse(global.data).name.replace(/\\n/g,'')}
+                {'\n'}
                 {JSON.parse(global.data).rating}
-                '/n'
+                {'\n'}
                 {/* {JSON.parse(global.data).phone} */}
                 {JSON.parse(global.data).location.display_address}
-            </Text>
-
-        </ImageBackground>
+        </Text>
            
-</View>
+    </View>
 );
 const CardDetails = ({index}) => (
     <View>
@@ -82,17 +77,21 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
     },
-    input: {
-        margin: 15,
-        height: 40,
-        borderColor: '#7a42f4',
-        borderWidth: 1
+    tinderimage: {
+        height: 600, 
+        width: 370,
+        justifyContent: 'center',
+        borderRadius: 40, 
     },
-    submitButton: {
-        backgroundColor: '#7a42f4',
-        padding: 10,
-        margin: 15,
-        height: 40
+    resultstext: {
+        fontWeight: 'bold',
+        color: 'white',
+        position:'absolute',
+        bottom: 0,
+        flex: 1,
+        justifyContent: 'flex-end',
+        marginBottom:110,
+        
     },
     submitButtonText: {
         color: 'white'
