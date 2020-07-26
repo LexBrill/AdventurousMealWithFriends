@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, TextInput, StyleSheet, Button,Slider } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, StyleSheet, Button,Slider, Image} from 'react-native'
 import './global.js'
 import { createStackNavigator } from '@react-navigation/stack';
 import { useNavigation, NavigationContainer } from '@react-navigation/native';
@@ -145,21 +145,6 @@ class GetInputs extends Component {
                     onChangeText={this.handleTerm} /> */}
 
                 <View style={{ flexDirection: "row" }}>
-                    {/* <TextInput style={styles.input}
-                        width={230}
-                        placeholder="Where are you?"
-                        placeholderTextColor='white'
-                        onChangeText={this.handleLocation} /> */}
-                    {/* <AwesomeButton type="primary"
-                        style={styles.locButton}
-                        height={40}
-                        stretch={true}
-                        onPress={this.handleUserLocation}>
-                        <Text style={styles.submitButtonText}>What is my location?</Text>
-                    </AwesomeButton> */}
-                </View>
-
-                <View style={{ flexDirection: "row" }}>
                     <AwesomeButton type="primary"
                         style={styles.button}
                         height={40}
@@ -183,6 +168,17 @@ class GetInputs extends Component {
                     placeholderTextColor='white'
                     onChangeText={this.handleDistance} /> */}
 
+
+                <TouchableOpacity
+                onPress={() => this.submit(this.state.place, this.state.price, this.state.distance)}>
+                    <Image 
+                    style={styles.image}
+                    source={require('./Button.png')}/>
+                    
+                </TouchableOpacity>
+
+
+
                 <Slider
                 style={styles.slider} 
                 step={5}
@@ -190,7 +186,8 @@ class GetInputs extends Component {
                 onSlidingComplete={this.handleDistance}
                 />
 
-                <AwesomeButton
+
+                {/* <AwesomeButton
                     style={styles.submitButton}
                     raiseLevel={6}
                     progress
@@ -199,7 +196,7 @@ class GetInputs extends Component {
 
                     onPress={() => this.submit(this.state.place, this.state.price, this.state.distance)}>
                     <Text style={styles.submitButtonText}> Submit </Text>
-                </AwesomeButton>
+                </AwesomeButton> */}
 
 
             </View>
@@ -215,6 +212,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flex: 1,
         backgroundColor: '#47476B',
+        alignItems: 'center',
     },
     input: {
         margin: 15,
@@ -261,5 +259,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
 
+    },
+    image: {
+        borderWidth:1,
+        borderColor:'rgba(0,0,0,0.2)',
+        alignItems:'center',
+        justifyContent:'center',
+        width:200,
+        height:200,
+        backgroundColor:'#fff',
+        borderRadius:100,
     }
+
 })
