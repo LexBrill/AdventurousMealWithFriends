@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, TextInput, StyleSheet, Button } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, StyleSheet, Button,Slider } from 'react-native'
 import './global.js'
 import { createStackNavigator } from '@react-navigation/stack';
 import { useNavigation, NavigationContainer } from '@react-navigation/native';
@@ -32,8 +32,8 @@ class GetInputs extends Component {
     handleLowPrice = () => {
         this.setState({ price: 'low' })
     }
-    handleDistance = (text) => {
-        this.setState({ distance: text })
+    handleDistance = (value) => {
+        this.setState({ distance: value })
     }
 
     _getLocation = async() => {
@@ -178,10 +178,17 @@ class GetInputs extends Component {
                     </AwesomeButton>
 
                 </View>
-                <TextInput style={styles.input}
+                {/* <TextInput style={styles.input}
                     placeholder="Maximum distance?"
                     placeholderTextColor='white'
-                    onChangeText={this.handleDistance} />
+                    onChangeText={this.handleDistance} /> */}
+
+                <Slider
+                style={styles.slider} 
+                step={5}
+                maximumValue={20}
+                onSlidingComplete={this.handleDistance}
+                />
 
                 <AwesomeButton
                     style={styles.submitButton}
@@ -248,4 +255,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    slider: {
+        margin:10,
+        width:300,
+        justifyContent: 'center',
+        alignItems: 'center',
+
+    }
 })
