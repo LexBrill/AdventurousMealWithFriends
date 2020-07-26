@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, TextInput, StyleSheet, Button,Slider, Image} from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, StyleSheet, Button,Slider, Image, ImageBackground} from 'react-native'
 import './global.js'
 import { createStackNavigator } from '@react-navigation/stack';
 import { useNavigation, NavigationContainer } from '@react-navigation/native';
@@ -138,12 +138,16 @@ class GetInputs extends Component {
     }
     render() {
         return (
+
+            <ImageBackground source={require('./Background.png')} style={styles.imageback}>
             <View style={styles.container}>
                 {/* <TextInput style={styles.input}
                     placeholder="Search Term"
                     placeholderTextColor='white'
                     onChangeText={this.handleTerm} /> */}
+               
 
+               
                 <View style={{ flexDirection: "row" }}>
                     <AwesomeButton type="primary"
                         style={styles.button}
@@ -200,6 +204,7 @@ class GetInputs extends Component {
 
 
             </View>
+             </ImageBackground>
         )
     }
 }
@@ -211,7 +216,7 @@ const styles = StyleSheet.create({
         paddingTop: 23,
         justifyContent: 'center',
         flex: 1,
-        backgroundColor: '#47476B',
+        // backgroundColor: '#47476B',
         alignItems: 'center',
     },
     input: {
@@ -269,6 +274,9 @@ const styles = StyleSheet.create({
         height:200,
         backgroundColor:'#fff',
         borderRadius:100,
+    },
+    imageback: {
+        flex:1,
+        resizeMode: 'stretch',
     }
-
 })
