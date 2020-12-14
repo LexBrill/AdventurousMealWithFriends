@@ -26,11 +26,11 @@ class GetInputs extends Component {
     handleLocation = (text) => {
         this.setState({ place: text })
     }
-    handleHighPrice = () => {
-        this.setState({ price: "high" })
-    }
     handleLowPrice = () => {
         this.setState({ price: 'low' })
+    }
+    handleHighPrice = () => {
+        this.setState({ price: "high" })
     }
     handleDistance = (value) => {
         this.setState({ distance: value })
@@ -149,6 +149,15 @@ class GetInputs extends Component {
 
                
                 <View style={{ flexDirection: "row" }}>
+
+                    <AwesomeButton type="primary"
+                        style={styles.button}
+                        height={40}
+                        stretch={true}
+                        onPress={this.handleLowPrice}>
+                        <Text style={styles.submitButtonText}>Low</Text>
+                    </AwesomeButton>
+
                     <AwesomeButton type="primary"
                         style={styles.button}
                         height={40}
@@ -158,13 +167,7 @@ class GetInputs extends Component {
                     </AwesomeButton>
 
 
-                    <AwesomeButton type="primary"
-                        style={styles.button}
-                        height={40}
-                        stretch={true}
-                        onPress={this.handleLowPrice}>
-                        <Text style={styles.submitButtonText}>Low</Text>
-                    </AwesomeButton>
+
 
                 </View>
                 {/* <TextInput style={styles.input}
