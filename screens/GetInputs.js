@@ -146,6 +146,12 @@ class GetInputs extends Component {
                     placeholderTextColor='white'
                     onChangeText={this.handleTerm} /> */}
                
+               <View style={styles.logo}>
+                   <Image
+                    // style = {{width:150, heigh:150}}
+                    source = {require('./Logo.png')}
+                    />
+               </View>
 
                
                 <View style={{ flexDirection: "row" }}>
@@ -216,11 +222,17 @@ export default GetInputs
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 23,
+        paddingTop: 0,
         justifyContent: 'center',
         flex: 1,
         // backgroundColor: '#47476B',
         alignItems: 'center',
+    },
+    logo: {
+        margin: 15,
+        alignItems: 'center',
+        marginBottom: 75,
+        marginTop: 0
     },
     input: {
         margin: 15,
