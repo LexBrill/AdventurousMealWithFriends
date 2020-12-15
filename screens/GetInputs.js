@@ -26,11 +26,11 @@ class GetInputs extends Component {
     handleLocation = (text) => {
         this.setState({ place: text })
     }
-    handleHighPrice = () => {
-        this.setState({ price: "high" })
-    }
     handleLowPrice = () => {
         this.setState({ price: 'low' })
+    }
+    handleHighPrice = () => {
+        this.setState({ price: "high" })
     }
     handleDistance = (value) => {
         this.setState({ distance: value })
@@ -146,9 +146,24 @@ class GetInputs extends Component {
                     placeholderTextColor='white'
                     onChangeText={this.handleTerm} /> */}
                
+               <View style={styles.logo}>
+                   <Image
+                    // style = {{width:150, heigh:150}}
+                    source = {require('./Logo.png')}
+                    />
+               </View>
 
                
                 <View style={{ flexDirection: "row" }}>
+
+                    <AwesomeButton type="primary"
+                        style={styles.button}
+                        height={40}
+                        stretch={true}
+                        onPress={this.handleLowPrice}>
+                        <Text style={styles.submitButtonText}>Low</Text>
+                    </AwesomeButton>
+
                     <AwesomeButton type="primary"
                         style={styles.button}
                         height={40}
@@ -158,13 +173,7 @@ class GetInputs extends Component {
                     </AwesomeButton>
 
 
-                    <AwesomeButton type="primary"
-                        style={styles.button}
-                        height={40}
-                        stretch={true}
-                        onPress={this.handleLowPrice}>
-                        <Text style={styles.submitButtonText}>Low</Text>
-                    </AwesomeButton>
+
 
                 </View>
                 {/* <TextInput style={styles.input}
@@ -197,7 +206,6 @@ class GetInputs extends Component {
                     progress
                     stretch={true}
                     height={55}
-
                     onPress={() => this.submit(this.state.place, this.state.price, this.state.distance)}>
                     <Text style={styles.submitButtonText}> Submit </Text>
                 </AwesomeButton> */}
@@ -213,11 +221,17 @@ export default GetInputs
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 23,
+        paddingTop: 0,
         justifyContent: 'center',
         flex: 1,
         // backgroundColor: '#47476B',
         alignItems: 'center',
+    },
+    logo: {
+        margin: 15,
+        alignItems: 'center',
+        marginBottom: 75,
+        marginTop: 0
     },
     input: {
         margin: 15,

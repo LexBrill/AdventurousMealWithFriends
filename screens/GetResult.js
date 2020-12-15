@@ -1,33 +1,73 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet, Button, TextInput, Image, ImageBackground } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, Button, TextInput, Image, ImageBackground,TouchableHighlight, Linking,ScrollView } from 'react-native'
 import './global'
-import { useNavigation, NavigationContainer } from '@react-navigation/native';
-import GetInputs from './GetInputs.js'
+import { useNavigation, NavigationContainer, Navigation } from '@react-navigation/native';
+import {GetInputs, place, price, distance} from './GetInputs.js'
 import Swiper from 'react-native-deck-swiper';
+import StarRating from 'react-native-star-rating'
+import AwesomeButton from 'react-native-really-awesome-button';
+import navigation from './navigation';
 
 
-
-const Card = ({card}) => (
-
+                
+const Card = ({card}) => {
+    return (
     <View style={{flex:1,}}>
-        <Image
-          source={{uri: JSON.parse(global.data).image_url}} 
-          style = {styles.tinderimage} 
-        >
-           
-        </Image>
-    
-        <Text style={styles.resultstext} >
+        <Button 
+            title='Go back'
+            onPress={() =>navigate('Random Restaurant')}
+            />
+        {/* <AwesomeButton style = {StyleSheet.button}
+         type="primary"
+         height={30}
+         backgroundColor = 'blue'
+        //  borderColor = 'black'
+         paddingHorizontal={30}
+         raiseLevel={0}
+         onPress = {() => navigation.goBack()}>
+              
+            <Text style = {StyleSheet.back}>
+                Back 
+            </Text>
+        </AwesomeButton> */}
+
+        <ScrollView>
+
+        <TouchableHighlight 
+            onPress = {() => Linking.openURL(JSON.parse(global.data).url)}>
+            <Image
+                source={{uri: JSON.parse(global.data).image_url}} 
+                style = {styles.tinderimage} >
+            </Image>
+        </TouchableHighlight> 
+
+        </ScrollView>
+
+        <TouchableOpacity style = {StyleSheet.results} >
+            <Text style={styles.resultstext}>
                 {JSON.parse(global.data).name.replace(/\\n/g,'')}
                 {'\n'}
                 {JSON.parse(global.data).rating}
                 {'\n'}
-                {/* {JSON.parse(global.data).phone} */}
-                {JSON.parse(global.data).location.display_address}
-        </Text>
-           
+                {JSON.parse(global.data).price}
+                {'\n'}
+                {JSON.parse(global.data).location.display_address.join(', ' )}
+                {/* {'\n'}
+                {isOpen} 
+                {'\n'}
+                {JSON.parse(global.data).transactions}
+                {'\n'} */}
+            </Text>
+
+            <StarRating style= {styles.starRatingstyle}
+            maxStars ={5}
+            rating = {JSON.parse(global.data).rating}/>
+
+        </TouchableOpacity>
+
     </View>
 );
+}
 const CardDetails = ({index}) => (
     <View>
        
@@ -44,7 +84,7 @@ export default function GetResult() {
                 renderCard={(card) => <Card card={card}/> }
                 disableTopSwipe
                 disableBottomSwipe
-                //   onSwiped= 
+                onSwipedAll = {(cardIndex) => {submit()}}
                 overlayLabels={{
                     left: {
                         title: 'NOPE',
@@ -91,17 +131,25 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-end',
         marginBottom:110,
-        
     },
-    submitButtonText: {
+    results: {
+        height: 100, 
+        width: 370,
+        justifyContent: 'center',
+        borderRadius: 40, 
+        color: 'orange'
+    },
+    imageback: {
+        flex:1,
+        resizeMode: 'stretch',
+    },
+    back: {
         color: 'white'
-    },
-    button: {
-        backgroundColor: "green",
-        paddingVertical: 33,
-        paddingHorizontal: 85,
-        borderRadius: 100,
-        height: 20,
+        ,
 
     },
 })
+
+if((JSON.parse(global.data).url) === 'false') 
+    {isOpen = 'Open'}
+    else {isOpen = 'Closed'}
