@@ -153,7 +153,20 @@ class GetInputs extends Component {
                     />
                </View>
 
-               
+               <Slider
+                style={styles.slider} 
+                step={5}
+                maximumValue={20}
+                // thumbStyle={{ height:40, width: 40, backgroundColor: 'transparent'}}
+                value = {this.state.value}
+                onValueChange = {value => this.setState({ value})}
+                onSlidingComplete={this.handleDistance}
+                />
+                <Text
+                style = {styles.distanceText}>
+                    Maximum Distance: {this.state.value}
+                </Text>
+
                 <View style={{ flexDirection: "row" }}>
 
                     <AwesomeButton type="primary"
@@ -192,12 +205,6 @@ class GetInputs extends Component {
 
 
 
-                <Slider
-                style={styles.slider} 
-                step={5}
-                maximumValue={20}
-                onSlidingComplete={this.handleDistance}
-                />
 
 
                 {/* <AwesomeButton
@@ -292,5 +299,9 @@ const styles = StyleSheet.create({
     imageback: {
         flex:1,
         resizeMode: 'stretch',
+    },
+    distanceText : {
+        fontSize: 20,
+        fontWeight :"bold"
     }
 })
