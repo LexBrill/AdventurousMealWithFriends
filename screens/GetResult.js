@@ -3,33 +3,36 @@ import { View, Text, TouchableOpacity, StyleSheet, Button, TextInput, Image, Ima
 import './global'
 import { useNavigation, NavigationContainer, Navigation } from '@react-navigation/native';
 import {GetInputs, place, price, distance} from './GetInputs.js'
+import { createStackNavigator } from '@react-navigation/stack';
 import Swiper from 'react-native-deck-swiper';
 import StarRating from 'react-native-star-rating'
 import AwesomeButton from 'react-native-really-awesome-button';
-import navigation from './navigation';
 
 
                 
-const Card = ({card}) => {
+const Card = () => {
+    const navigation = useNavigation();
     return (
     <View style={{flex:1,}}>
-        <Button 
+        {/* <Button 
             title='Go back'
-            onPress={() =>navigate('Random Restaurant')}
-            />
-        {/* <AwesomeButton style = {StyleSheet.button}
+            onPress={() => navigation.navigate('Random Restaurant')}
+            /> */}
+        <AwesomeButton style = {StyleSheet.button}
+         title = 'back'
          type="primary"
          height={30}
-         backgroundColor = 'blue'
+         backgroundColor = 'black'
+         textColor = '#FFFFFF'
         //  borderColor = 'black'
-         paddingHorizontal={30}
-         raiseLevel={0}
-         onPress = {() => navigation.goBack()}>
-              
-            <Text style = {StyleSheet.back}>
-                Back 
-            </Text>
-        </AwesomeButton> */}
+        paddingHorizontal={30}
+        raiseLevel={0}
+        width = {50}
+        textSize ={10}
+        style = {StyleSheet.button}
+        OnPress={() => navigation.navigate('Random Restaurant')}>
+        Back
+        </AwesomeButton>
 
         <ScrollView>
 
@@ -75,6 +78,7 @@ const CardDetails = ({index}) => (
 );
 
 export default function GetResult() {
+    // const navigation = useNavigation();
     const [index, setIndex] = React.useState(0);
     return(
         <View style= {styles.container}>
@@ -143,10 +147,11 @@ const styles = StyleSheet.create({
         flex:1,
         resizeMode: 'stretch',
     },
-    back: {
-        color: 'white'
-        ,
-
+    button: {
+        color: 'white',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: "center"
     },
 })
 

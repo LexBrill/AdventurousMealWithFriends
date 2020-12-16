@@ -32,10 +32,10 @@ export default () => (
         />
         <Stack.Screen
           name="Results"
+          component={GetResult}
           options={{
             header:() => null
           }}
-          component={GetResult}
         />
       </Stack.Navigator>
       </NavigationContainer>

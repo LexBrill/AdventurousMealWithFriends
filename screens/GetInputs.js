@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
         margin: 15,
         alignItems: 'center',
         marginBottom: 75,
-        marginTop: 0
+        marginTop: 0,
     },
     input: {
         margin: 15,
