@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import { View, Text, TouchableOpacity, TextInput, StyleSheet, Button,Slider, Image, ImageBackground} from 'react-native'
 import './global.js'
 import { createStackNavigator } from '@react-navigation/stack';
@@ -28,12 +28,15 @@ class GetInputs extends Component {
     }
     handleLowPrice = () => {
         this.setState({ price: 'low' })
+        global.price = "low"
     }
     handleHighPrice = () => {
         this.setState({ price: "high" })
+        global.price = "high"
     }
     handleDistance = (value) => {
         this.setState({ distance: value })
+        global.distance = value
     }
 
     _getLocation = async() => {
@@ -52,7 +55,7 @@ class GetInputs extends Component {
         this.setState({
             place: JSON.stringify(userLocation)
         })
-
+        global.place = this.state.place
     }
     // getLocationAsync = async () => {
     //     let { status } = await Permissions.askAsync(Permissions.LOCATION);
