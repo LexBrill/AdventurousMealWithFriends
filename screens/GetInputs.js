@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react'
 import { View, Text, TouchableOpacity, TextInput, StyleSheet, Button,Slider, Image, ImageBackground} from 'react-native'
 import './global.js'
+import g from './global.js'
 import { createStackNavigator } from '@react-navigation/stack';
 import { useNavigation, NavigationContainer } from '@react-navigation/native';
 import AwesomeButton from "react-native-really-awesome-button";
@@ -199,7 +200,7 @@ class GetInputs extends Component {
 
 
                 <TouchableOpacity
-                onPress={() => this.submit(this.state.place, this.state.price, this.state.distance)}>
+                onPress={() => (g.submit(this.state.place, this.state.price, this.state.distance)).then(zoop => this.props.navigation.push('Results'))}>
                     <Image 
                     style={styles.image}
                     source={require('./Button.png')}/>
@@ -226,7 +227,8 @@ class GetInputs extends Component {
         )
     }
 }
-export default GetInputs
+const gi = new GetInputs();
+export default gi;
 
 
 const styles = StyleSheet.create({
