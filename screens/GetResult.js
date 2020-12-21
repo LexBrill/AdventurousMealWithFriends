@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, Button, TextInput, Image, ImageBackground,TouchableHighlight, Linking,ScrollView } from 'react-native'
 import './global'
 import { useNavigation, NavigationContainer, Navigation } from '@react-navigation/native';
@@ -9,7 +9,7 @@ import StarRating from 'react-native-star-rating'
 import AwesomeButton from 'react-native-really-awesome-button';
 
 
-
+                
 const Card = () => {
     const navigation = useNavigation();
     return (
@@ -54,8 +54,6 @@ const Card = () => {
                 {'\n'}
                 {JSON.parse(global.data).price}
                 {'\n'}
-                {/* {GetInputs.state.price}
-                {'\n'} */}
                 {JSON.parse(global.data).location.display_address.join(', ' )}
                 {/* {'\n'}
                 {isOpen} 
@@ -73,14 +71,13 @@ const Card = () => {
     </View>
 );
 }
-const CardDetails = ({index}) => (
-    <View>
+// const CardDetails = ({index}) => (
+//     <View>
        
-    </View>
-);
+//     </View>
+// );
 
 export default function GetResult() {
-    // const navigation = useNavigation();
     const [index, setIndex] = React.useState(0);
     return(
         <View style= {styles.container}>
@@ -90,7 +87,7 @@ export default function GetResult() {
                 renderCard={(card) => <Card card={card}/> }
                 disableTopSwipe
                 disableBottomSwipe
-                onSwiped = {zood => alert(global.place + " " + global.price + " " + global.distance)}
+                onSwipedAll = {(cardIndex) => {submit()}}
                 overlayLabels={{
                     left: {
                         title: 'NOPE',
